@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+    body {
+        background: url('https://source.unsplash.com/1600x900/?study,book') no-repeat center center fixed;
+        background-size: cover;
+        overflow-x: hidden;
+        color: #333; /* Dark text color for better readability */
+    }
+
+    .timeline {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: #f1f1f1;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+    }
+
+    .container {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+    }
+
+    .container.left {
+        left: 0;
+    }
+
+    .container.right {
+        left: 50%;
+    }
+
+    .container.left::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        right: 30px;
+        border: medium solid #f1f1f1;
+        border-width: 10px 0 10px 10px;
+        border-color: transparent transparent transparent #f1f1f1;
+    }
+
+    .container.right::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        left: 30px;
+        border: medium solid #f1f1f1;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent #f1f1f1 transparent transparent;
+    }
+
+    .container::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: white;
+        border: 4px solid #f1f1f1;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .left .container::after {
+        left: -17px;
+    }
+
+    .right .container::after {
+        left: -16px;
+    }
+
+    .content {
+        padding: 20px 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 6px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .content h2 {
+        font-weight: bold;
+    }
+
+    .content p {
+        margin: 15px 0;
+    }
+
+    .content ul {
+        margin: 10px 0;
+    }
+
+    .content li {
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .footer {
+        background-color: #222;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2 class="text-center" data-aos="fade-down">Your Personalized Learning Plan</h2>
+    <p class="text-center mb-4" data-aos="fade-down" data-aos-delay="100">Here's how you can progress over the next weeks:</p>
+
+    <div class="timeline">
+        {% set week_data = [
+            ("Week 1 & 2: Introduction to SQL, Installing Necessary Tools & Understanding Databases", [
+                "Hours 1-3: Dedicating the first few hours to getting familiar with the theory behind SQL. Learn about what SQL is, why it is used, and how it can help in data analysis.",
+                "Hours 4-5: Learn how to install and setup your SQL environment. Get comfortable with the GUI (Graphical User Interface).",
+                "Hours 6-8: Understand how databases work. Concepts like what is a database, tables, rows and different types of databases(SQL, NoSQL).",
+                "Hours 9-14: Hands-on basic SQL commands. Familiarize with commands like 'SELECT', 'UPDATE', 'DELETE', 'INSERT INTO', 'WHERE', 'AND & OR'."
+            ]),
+            ("Week 3 & 4: Deep Dive into SQL Commands and Operators", [
+                "Hours 1-4: Advance SQL commands like 'LIKE', 'TOP', 'ORDER BY'.",
+                "Hours 5-7: SQL Operators such as Arithmetic operators, Comparison operators, Logical operators, etc.",
+                "Hours 8-10: Learn about 'GROUP BY' and aggregate functions like 'COUNT', 'SUM', etc.",
+                "Hours 11-14: Hands-on complex queries and exercises. Try to solve practical problems using SQL."
+            ]),
+            ("Week 5 & 6: Joins, Unions, NULL values, Aliases", [
+                "Hours 1-5: Exploring the SQL Joins - 'INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'FULL OUTER JOIN'.",
+                "Hours 6-8: Learning about SQL union and the differences between 'UNION' and 'UNION ALL'.",
+                "Hours 9-10: Handling NULL values.",
+                "Hours 11-14: Using Aliases in SQL for better query readability."
+            ]),
+            ("Week 7: Data cleaning with SQL and Subqueries", [
+                "Hours 1-4: Learning about the procedures and SQL commands used to clean data.",
+                "Hours 5-7: Introduction to SQL Subqueries – both simple and correlated subqueries.",
+                "Hours 8-10: Practice SQL Subqueries with exercises."
+            ]),
+            ("Week 8: Advanced SQL Concepts, Indexes and SQL constraints", [
+                "Hours 1-4: Learning about 'SQL VIEW', 'SQL Sequences' and 'SQL Indexes'.",
+                "Hours 5-7: SQL Constraints - 'NOT NULL', 'UNIQUE', 'PRIMARY KEY', 'FOREIGN KEY', 'CHECK', 'DEFAULT'",
+                "Hours 8-10: Resume and Interview Preparation - Brushing up all the concepts learned till now, updating the resume to include the newfound SQL skills, and practicing SQL interview questions."
+            ])
+        ] %}
+        {% for week, activities in week_data %}
+        <div class="container left" data-aos="fade-right" data-aos-delay="100">
+            <div class="content">
+                <h2>{{ week }}</h2>
+                <ul>
+                    {% for activity in activities %}
+                    <li>{{ activity }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4" data-aos="zoom-in" data-aos-delay="200">
+        <a href="/questionnaire" class="btn btn-primary">Modify Your Answers</a>
+        <a href="/" class="btn btn-secondary mt-2">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+{% endblock %}

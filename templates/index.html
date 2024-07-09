@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnWithAI</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x900/?technology,ai');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        .hero-text {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+        .hero-text button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 10px 25px;
+            color: black;
+            background-color: #ddd;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .hero-text button:hover {
+            background-color: #555;
+            color: white;
+        }
+        .features-section {
+            text-align: center;
+            padding: 50px 10px;
+        }
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .feature-box {
+            padding: 20px;
+        }
+        .feature-box i {
+            font-size: 50px;
+            margin: 20px 0;
+            color: #f4511e;
+            transition: transform 0.2s; /* Animation */
+        }
+        .feature-box i:hover {
+            transform: scale(1.1); /* Slightly larger */
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #f7f7f7;
+            transition: color 0.3s;
+        }
+        .navbar-brand:hover {
+            color: #f4511e;
+        }
+        .start-journey {
+            margin-top: 20px;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .start-journey:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">LearnWithAI</a>
+    </div>
+</nav>
+
+<div class="hero-image">
+    <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
+        <h1 style="font-size:50px">Welcome to LearnWithAI</h1>
+        <p>Unlock your potential with personalized AI-driven learning paths.</p>
+        <button onclick="document.getElementById('features').scrollIntoView();" class = "btn btn-primary start-journey" role="button">Learn More</button>
+        <a href="/questionnaire" class="btn btn-primary start-journey" role="button">Start Your Journey</a>
+    </div>
+</div>
+
+<div class="container features-section" id="features">
+    <h2 data-aos="fade-up">Why Choose LearnWithAI?</h2>
+    <p data-aos="fade-up">Here are some features that make us unique:</p>
+    <div class="row">
+        <div class="col-md-4 feature-box" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-brain"></i>
+            <h3>Smart Learning</h3>
+            <p>Adaptive learning experiences tailored to your needs and skills.</p>
+        </div>
+        <div class="col-md-4 feature-box" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Hands-On Practice</h3>
+            <p>Interactive exercises and coding challenges to enhance learning.</p>
+        </div>
+        <div class="col-md-4 feature-box" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-chart-line"></i>
+            <h3>Progress Tracking</h3>
+            <p>Track your learning journey and see your improvements over time.</p>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Copyright &copy; 2023 LearnWithAI. All rights reserved.</p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+</body>
+</html>
